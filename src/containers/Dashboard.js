@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import Dashboard from '../components/Dashboard'
+import { removeCar } from '../redux/actions'
 // import { removeCar } action here
 
 const mapStateToProps = (state) => {
@@ -9,6 +10,9 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps =(dispatch) => ({
+    removeCar: (id) => dispatch(removeCar(id)),
+})
 // add mapDispatchToProps function here
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

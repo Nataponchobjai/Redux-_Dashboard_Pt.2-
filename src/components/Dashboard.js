@@ -10,15 +10,18 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete'
 import Chart from './Chart'
 import Total from './Total'
-import AddCar from './AddCar'
+import AddCar from '../containers/AddCar'
  
 const Dashboard = (props) => {
+    const handleDelete = (id) => {
+        props.removeCar(id);
+    };
     return (
         <Container maxWidth="lg" className="car-container">
             <h4>Welcome, {props.user.username}</h4>
             <div className="flex-container">
                 <Chart />
-                <Total />
+                <Total cars={props.cars} />
                 <AddCar carTotal={props.cars.length} />
             </div>
             <Table>
@@ -44,6 +47,7 @@ const Dashboard = (props) => {
                         <TableCell>{car["horsepower"]}</TableCell>
                         <TableCell>
                             <DeleteIcon
+                             onClick={() => handleDelete(car.id)}
                                 // add onClick method here
                                 className="icon text-red" />
                         </TableCell>
