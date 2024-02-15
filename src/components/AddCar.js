@@ -25,11 +25,13 @@ class AddCar extends Component {
     }
 
     handleSubmit = (e) => {
-        e.preventDefault()
-        const payload = { ...this.state }
-        payload.id = this.props.carTotal + 1
-        delete payload.open
-        console.log("THE CAR", payload)
+        e.preventDefault();
+        const payload = { ...this.state };
+        payload.id = this.props.carTotal + 1;
+        delete payload.open;
+        console.log("THE CAR", payload);
+        this.props.addCar(payload);
+        this.setState({ open: false })
         // add this.props.addCar function here
         // also add this.setState to close the dialog
     }
@@ -46,6 +48,7 @@ class AddCar extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <Fragment>
                 <div style={{ textAlign: 'center' }}>
